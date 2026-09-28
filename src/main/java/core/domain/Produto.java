@@ -5,17 +5,17 @@ import java.util.UUID;
 public class Produto {
     private UUID id;
     private String nome,categoria;
-    private float valor;
+    private float preco;
     private int estoque;
 
     public Produto() {
     }
 
-    public Produto(UUID id, String nome, String categoria, float valor, int estoque) {
+    public Produto(UUID id, String nome, String categoria, float preco, int estoque) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
-        this.valor = valor;
+        this.preco = preco;
         this.estoque = estoque;
     }
 
@@ -43,12 +43,12 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public float getValor() {
-        return valor;
+    public float getPreco() {
+        return preco;
     }
 
-    public void setValor(float valor) {
-        this.valor = valor;
+    public void setPreco(float valor) {
+        this.preco = valor;
     }
 
     public int getEstoque() {
