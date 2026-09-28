@@ -1,3 +1,4 @@
+import core.Model.CadastroInput;
 import core.domain.Produto;
 import org.w3c.dom.ls.LSOutput;
 
@@ -35,16 +36,19 @@ public class Aplplication {
                 case 1:
                     System.out.println("Nome:");
                     String nome = input.nextLine();
-                    System.out.println("Preço");
+                    System.out.println("Preço:");
                     float preco = input.nextInt();
-                    System.out.println("Categoria");
+                    System.out.println("Categoria:");
                     String categoria = input.nextLine();
                     System.out.println("Estoque:");
                     int estoque = input.nextInt();
+                    new CadastroInput(
+                            nome,
+                            categoria,
+                            preco,
+                            estoque);
                     break;
             }
-
-
 
 
         }while(decisao != 0);
