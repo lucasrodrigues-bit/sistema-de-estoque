@@ -12,5 +12,4 @@ public interface ProdutoRepository {
     public Optional<Produto> buscarPorId(UUID id);
     public void atualizar(Produto produto);
     public void listar();
-    public void categorizar(Produto categoria);
 }
