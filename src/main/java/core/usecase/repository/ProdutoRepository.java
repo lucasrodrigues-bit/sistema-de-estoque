@@ -15,5 +15,5 @@ public interface ProdutoRepository {
     public Optional<Produto> buscarPorId(UUID id);
     public List<Produto> buscarPorNome(String nome);
     public void atualizar(Produto produto);
-    public Map listar();
+    public List<Produto> listar();
 }
