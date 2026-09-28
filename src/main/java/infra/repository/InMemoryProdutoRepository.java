@@ -10,23 +10,28 @@ public class InMemoryProdutoRepository implements ProdutoRepository {
 
     @Override
     public void salvar(Produto produto){
+        if(produtos.containsKey(produto.getId())){
+            System.out.println("Produto já cadastrado");
+            return;
+        }
         produtos.put(produto.getId(),produto);
-        System.out.println(produtos.get(produto.getId()));
 
     }
+    @Override
     public void deletar(UUID id){
 
     };
     public Optional<Produto> buscarProduto(UUID id) {
+    @Override
+    @Override
         return null;
-    };
+    }
+    @Override
     public void atualizar(Produto produto){
 
     };
-    public Map listar(){
+    @Override
+    public List listar(){
     return null;
     };
-
-    public void categorizar(Produto produto){
-    }
 }
