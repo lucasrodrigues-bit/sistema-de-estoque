@@ -21,9 +21,14 @@ public class InMemoryProdutoRepository implements ProdutoRepository {
     public void deletar(UUID id){
 
     };
-    public Optional<Produto> buscarProduto(UUID id) {
     @Override
+    public Optional<Produto> buscarPorId(UUID id) {
+        Produto produto = produtos.get(id);
+        return Optional.ofNullable(produto);
+    }
     @Override
+    public List<Produto> buscarPorNome(String nome){
+
         return null;
     }
     @Override
