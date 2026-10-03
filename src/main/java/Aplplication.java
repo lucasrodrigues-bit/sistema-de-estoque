@@ -1,6 +1,4 @@
-import core.Model.CadastroInput;
-import core.domain.Produto;
-import org.w3c.dom.ls.LSOutput;
+import core.DTO.CadastroProdutoDTO;
 
 import java.lang.reflect.Array;
 import java.util.LinkedList;
@@ -35,14 +33,16 @@ public class Aplplication {
             switch (decisao) {
                 case 1:
                     System.out.println("Nome:");
-                    String nome = input.nextLine();
+                    String nome = input.nextLine().trim().toLowerCase();
                     System.out.println("Preço:");
                     float preco = input.nextInt();
+                    input.nextFloat();
                     System.out.println("Categoria:");
                     String categoria = input.nextLine();
                     System.out.println("Estoque:");
                     int estoque = input.nextInt();
-                    new CadastroInput(
+                    input.nextInt();
+                     new CadastroProdutoDTO(
                             nome,
                             categoria,
                             preco,
