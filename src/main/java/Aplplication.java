@@ -1,9 +1,5 @@
 import core.DTO.CadastroProdutoDTO;
-
-import java.lang.reflect.Array;
-import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.UUID;
 
 import core.usecase.CadastrarProdutoUseCase;
 

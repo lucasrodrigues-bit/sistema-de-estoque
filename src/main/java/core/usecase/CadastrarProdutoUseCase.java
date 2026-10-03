@@ -1,25 +1,25 @@
 package core.usecase;
 
-import core.Model.CadastroInput;
-import core.domain.Produto;
-import core.usecase.repository.ProdutoRepository;
+import core.DTO.CadastroProdutoDTO;
+import core.entidades.Produto;
+import core.repository.ProdutoRepository;
 
 import java.util.UUID;
 
 public class CadastrarProdutoUseCase {
-    private final ProdutoRepository repository;
+    private ProdutoRepository repository;
 
     public CadastrarProdutoUseCase(ProdutoRepository repository) {
         this.repository = repository;
     }
 
-    public Produto cadastrarProduto(CadastroInput inputUser) {
+    public Produto cadastrarProduto(CadastroProdutoDTO dadosProduto) {
         Produto novoProduto = new Produto(
                 UUID.randomUUID(),
-                inputUser.getNome(),
-                inputUser.getCategoria(),
-                inputUser.getPreco(),
-                inputUser.getEstoque()
+                dadosProduto.getNome(),
+                dadosProduto.getCategoria(),
+                dadosProduto.getPreco(),
+                dadosProduto.getEstoque()
         );
         repository.salvar(novoProduto);
         return novoProduto;
