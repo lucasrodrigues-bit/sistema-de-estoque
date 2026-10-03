@@ -1,4 +1,5 @@
 package core.usecase;
+import core.DTO.BuscaProdutoDTO;
 import core.entidades.Produto;
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +12,9 @@ public class BuscarProdutoUseCase {
     private ProdutoRepository repository;
 
     public BuscarProdutoUseCase(ProdutoRepository repository) {this.repository = repository;}
-    public List<Produto> buscarProduto(String nome) {
-        List<Produto> produtos = repository.buscarPorNome(nome);
+    public List<Produto> buscarProduto(BuscaProdutoDTO nomeBusca) {
+
+        List<Produto> produtos = repository.buscarPorNome(nomeBusca.getNome());
 
         if (produtos.isEmpty()) {
             throw new ProdutoNaoEncontradoException(
