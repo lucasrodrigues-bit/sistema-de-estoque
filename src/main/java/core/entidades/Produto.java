@@ -1,4 +1,6 @@
-package core.domain;
+package core.entidades;
+
+import core.exception.CadastroInvalidoException;
 
 import java.util.UUID;
 
@@ -12,12 +14,51 @@ public class Produto {
     }
 
     public Produto(UUID id, String nome, String categoria, float preco, int estoque) {
+
+        if (nome == null || nome.isBlank()) {
+            throw new CadastroInvalidoException("Nome é obrigatório.");
+        }
+
+        if (categoria == null || categoria.isBlank()) {
+            throw new CadastroInvalidoException("Categoria é obrigatória.");
+        }
+
+        if (preco < 0) {
+            throw new CadastroInvalidoException("Preço não pode ser negativo.");
+        }
+
+        if (estoque < 0) {
+            throw new CadastroInvalidoException("Estoque não pode ser negativo.");
+        }
+
+
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
         this.preco = preco;
         this.estoque = estoque;
     }
+
+    public void adicionarEstoque(int quantidade) {
+
+        if (quantidade <= 0 ) {
+            throw new IllegalArgumentException(
+                    "Quantidade deve ser positiva"
+            );
+        }
+
+        this.estoque += quantidade;
+    }
+
+    public void removerEstoque(int quantidade){
+        if(estoque <= 0 ){
+            throw new IllegalArgumentException(
+                    "Quantidade deve ser positiva"
+            );
+        }
+    }
+
+
 
     public UUID getId() {
         return id;
