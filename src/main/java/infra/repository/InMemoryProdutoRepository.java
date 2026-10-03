@@ -1,7 +1,9 @@
 package infra.repository;
 
-import core.domain.Produto;
-import core.usecase.repository.ProdutoRepository;
+import core.entidades.Produto;
+import core.exception.CadastroInvalidoException;
+import core.repository.ProdutoRepository;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -9,34 +11,40 @@ public class InMemoryProdutoRepository implements ProdutoRepository {
     private Map<UUID, Produto>produtos = new HashMap<>();
 
     @Override
-    public void salvar(Produto produto){
-        if(produtos.containsKey(produto.getId())){
-            System.out.println("Produto já cadastrado");
-            return;
+    public void salvar(@NotNull Produto novoProduto){
+        if (produtos.containsKey(novoProduto.getId())) {
+            throw new CadastroInvalidoException("Produto já cadastrado");
         }
-        produtos.put(produto.getId(),produto);
-
+        produtos.put(novoProduto.getId(),novoProduto);
     }
-    @Override
-    public void deletar(UUID id){
 
-    };
     @Override
-    public Optional<Produto> buscarPorId(UUID id) {
+    public void deletar( @NotNull UUID id){
+        produtos.remove(id);
+    };
+
+    @Override
+    public Optional<Produto> buscarPorId(@NotNull UUID id) {
         Produto produto = produtos.get(id);
         return Optional.ofNullable(produto);
     }
-    @Override
-    public List<Produto> buscarPorNome(String nome){
 
-        return null;
+    @Override
+    public List<Produto> buscarPorNome(@NotNull String nome){
+        List<Produto> encontrados = new ArrayList<>();
+        for(Produto produto : produtos.values()){
+            if(produto.getNome().equalsIgnoreCase(nome)){
+                encontrados.add(produto);
+            }
+        }
+        return encontrados;
     }
     @Override
-    public void atualizar(Produto produto){
+    public void atualizar(@NotNull Produto produto){
 
     };
     @Override
-    public List listar(){
-    return null;
-    };
+    public List<Produto> listar(){
+        return new LinkedList<>(produtos.values());
+    }
 }
