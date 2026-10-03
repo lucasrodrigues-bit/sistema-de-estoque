@@ -16,18 +16,18 @@ public class CadastroProdutoDTO {
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
     public String getCategoria() {
-        return this.categoria;
+        return categoria;
     }
 
     public float getPreco() {
-        return this.preco;
+        return preco;
     }
 
     public int getEstoque() {
-        return this.estoque;
+        return estoque;
     }
 }
