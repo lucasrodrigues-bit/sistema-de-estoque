@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ProdutoRepository {
     public void salvar(Produto produto);
-    public void deletar(UUID id);
+    public void deletar(String nome);
     public Optional<Produto> buscarPorId(UUID id);
     public List<Produto> buscarPorNome(String nome);
     public void atualizar(Produto produto);
