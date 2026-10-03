@@ -1,13 +1,14 @@
-package core.Model;
+package core.DTO;
 
 
+import core.usecase.CadastrarProdutoUseCase;
 
-public class CadastroInput {
+public class CadastroProdutoDTO {
     private String nome,categoria;
     private float preco;
     private int estoque;
 
-    public CadastroInput(String nome, String categoria, float preco, int estoque) {
+    public CadastroProdutoDTO(String nome, String categoria, float preco, int estoque) {
         this.nome = nome;
         this.categoria = categoria;
         this.preco = preco;
@@ -15,18 +16,18 @@ public class CadastroInput {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String getCategoria() {
-        return categoria;
+        return this.categoria;
     }
 
     public float getPreco() {
-        return preco;
+        return this.preco;
     }
 
     public int getEstoque() {
-        return estoque;
+        return this.estoque;
     }
 }
