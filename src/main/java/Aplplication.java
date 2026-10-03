@@ -1,6 +1,9 @@
 import core.DTO.CadastroProdutoDTO;
 import java.util.Scanner;
+import core.DTO.BuscaProdutoDTO;
 
+import core.repository.ProdutoRepository;
+import core.usecase.BuscarProdutoUseCase;
 import core.usecase.CadastrarProdutoUseCase;
 
 public class Aplplication {
@@ -29,7 +32,7 @@ public class Aplplication {
             switch (decisao) {
                 case 1:
                     System.out.println("Nome:");
-                    String nome = input.nextLine().trim().toLowerCase();
+                    String nomeCadastro = input.nextLine();
                     System.out.println("Preço:");
                     float preco = input.nextInt();
                     input.nextFloat();
@@ -39,10 +42,17 @@ public class Aplplication {
                     int estoque = input.nextInt();
                     input.nextInt();
                      new CadastroProdutoDTO(
-                            nome,
+                            nomeCadastro,
                             categoria,
                             preco,
                             estoque);
+                    break;
+                case 4:
+                    System.out.println("Qual produto deseja procurar?");
+                    String nomeBusca = input.nextLine();
+                    new BuscaProdutoDTO(
+                            nomeBusca
+                    );
                     break;
             }
 
